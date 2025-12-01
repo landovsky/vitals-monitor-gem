@@ -1,0 +1,52 @@
+module VitalsMonitor
+  VERSION: String
+
+  class Error < StandardError
+  end
+
+  def self.config: () -> Configuration
+  def self.configure: () { (Configuration) -> void } -> void
+
+  class Configuration
+    attr_accessor enabled_components: Hash[Symbol, bool]
+
+    def initialize: () -> void
+    def enabled?: (Symbol | String component) -> bool
+    def enable: (Symbol | String component) -> void
+    def disable: (Symbol | String component) -> void
+  end
+
+  module Checks
+    class Base
+      TIMEOUT: Integer
+
+      def check: () -> { status: :healthy | :unhealthy, message: String? }
+
+      protected
+
+      def healthy: (?String? message) -> { status: :healthy, message: String? }
+      def unhealthy: (String message) -> { status: :unhealthy, message: String }
+      def timeout: () { () -> untyped } -> untyped
+    end
+
+    class Postgres < Base
+      def check: () -> { status: :healthy | :unhealthy, message: String? }
+    end
+
+    class Redis < Base
+      def check: () -> { status: :healthy | :unhealthy, message: String? }
+    end
+
+    class Sidekiq < Base
+      def check: () -> { status: :healthy | :unhealthy, message: String? }
+    end
+  end
+
+  class Engine < ::Rails::Engine
+  end
+
+  class VitalsController < ActionController::Base
+    def index: () -> void
+    def show: () -> void
+  end
+end
