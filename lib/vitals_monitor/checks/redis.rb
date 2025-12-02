@@ -22,6 +22,8 @@ module VitalsMonitor
           ::Redis.new(Rails.application.config.redis)
         elsif defined?(Sidekiq) && Sidekiq.respond_to?(:redis)
           Sidekiq.redis { |conn| conn }
+        elsif defined?(::Redis)
+          ::Redis.new
         else
           raise "Redis connection not configured"
         end
