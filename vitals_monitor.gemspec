@@ -10,13 +10,13 @@ Gem::Specification.new do |spec|
 
   spec.summary = "Rails engine providing health check endpoints for Postgres, Redis, and Sidekiq"
   spec.description = "VitalsMonitor is a Rails engine that provides /vitals endpoints to monitor the health status of Postgres, Redis, and Sidekiq. Components can be enabled/disabled via configuration, and endpoints return HTML or JSON with appropriate HTTP status codes for monitoring."
-  spec.homepage = "https://github.com/landovsky/vitals_monitor"
+  spec.homepage = "https://github.com/landovsky/vitals_monitor-gem"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/landovsky/vitals_monitor"
-  spec.metadata["changelog_uri"] = "https://github.com/landovsky/vitals_monitor/blob/main/CHANGELOG.md"
+  spec.metadata["source_code_uri"] = "https://github.com/landovsky/vitals_monitor-gem"
+  spec.metadata["changelog_uri"] = "https://github.com/landovsky/vitals_monitor-gem/blob/main/CHANGELOG.md"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
